@@ -6,7 +6,7 @@ from sms import *
 import time
 import random
 
-queries = ['aeron', 'herman miller chair', 'leap', 'steelcase chair']
+queries = ['steelcase', 'aeron', 'herman miller chair', 'leap', 'steelcase chair']
 
 def search(query):
     cl_s = CraigslistForSale(site='lasvegas',category='fua', 
@@ -18,11 +18,12 @@ def search(query):
         if (not exists):
             insert_row(result['repost_of'], result['datetime'], result['url'], result['price'], result['name'], result['id'])
             conn.commit()
-            row = c.fetchone()
+            row = fetch_query(id)
             text(row[2].encode('ascii', 'ignore'))
 
 def run():
     for query in queries:
+        print('searching....%s' % (query))
         search(query)
         time.sleep(random.randint(10,45))
 
