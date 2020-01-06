@@ -5,6 +5,7 @@ from db import *
 from sms import *
 import time
 import random
+import datetime
 
 queries = ['steelcase', 'aeron', 'herman miller chair', 'leap', 'steelcase chair']
 
@@ -27,4 +28,8 @@ def run():
         search(query)
         time.sleep(random.randint(10,45))
 
+print('....starting....')
+print datetime.datetime.utcnow()
 run()
+print('....ending....')
+print datetime.datetime.utcnow()
